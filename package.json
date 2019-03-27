@@ -1,0 +1,37 @@
+{
+  "name": "parity-config-generator",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://paritytech.github.io/parity-config-generator",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "react-scripts": "0.4.3",
+    "semistandard": "^9.2.1",
+    "snazzy": "^6.0.0"
+  },
+  "dependencies": {
+    "bl": "^1.2.1",
+    "classnames": "^2.2.5",
+    "dialog-polyfill": "^0.4.9",
+    "getmdl-select": "^1.1.0",
+    "lodash.isequal": "^4.5.0",
+    "material-design-lite": "^1.3.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "toml": "^2.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "semistandard --verbose | snazzy",
+    "lint-fix": "semistandard --fix --verbose | snazzy",
+    "generate-data": "node scripts/generate-config-data.js",
+    "generate-docs": "node scripts/generate-config-docs.js"
+  },
+  "semistandard": {
+    "parser": "babel-eslint"
+  }
+}

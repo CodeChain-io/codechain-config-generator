@@ -1,0 +1,376 @@
+{
+  "__internal": {
+    "configMode": {
+      "name": "Mode",
+      "description": {
+        "simple": "Simplified config options",
+        "advanced": "All available options"
+      },
+      "default": "simple",
+      "values": [
+        "Quick Configuration [simple]",
+        "Advanced Configuration [advanced]"
+      ]
+    },
+    "platform": {
+      "name": "Platform",
+      "description": {
+        "Linux": "Config for Linux",
+        "Mac OS": "Config for Mac OS"
+      },
+      "default": null,
+      "values": [
+        "Linux",
+        "Mac OS"
+      ]
+    }
+  },
+  "codechain": {
+    "quiet": {
+      "name": "Quiet",
+      "type": "bool",
+      "description": "Do not show any synchronization information in the console.",
+      "default": false
+    },
+    "db_path": {
+      "name": "Database Path",
+      "type": "path",
+      "description": "CodeChain databases will be stored in {}.",
+      "default": "db"
+    },
+    "keys_path": {
+      "name": "Keys Path",
+      "type": "path",
+      "description": "Your encrypted private keys will be stored in {}.",
+      "default": "keys"
+    },
+    "chain": {
+      "name": "Chain",
+      "type": "string",
+      "description": {
+        "solo": "",
+        "simple_poa": "",
+        "tendermint": "",
+        "cuckoo": "",
+        "blake_pow": "",
+        "husky": "",
+        "saluki": "",
+        "corgi": ""
+      },
+      "default": "solo",
+      "suggestions": [
+        "solo",
+        "simple_poa",
+        "tendermint",
+        "cuckoo",
+        "blake_pow",
+        "husky",
+        "saluki",
+        "corgi"
+      ],
+      "simple": true
+    },
+    "base_path": {
+      "name": "Base Path",
+      "type": "path",
+      "description": "Blockchain and settings will be stored in {}.",
+      "default": "$BASE",
+      "simple": true
+    },
+    "section": "CodeChain",
+    "description": "Basic parameters regarding CodeChain operation."
+  },
+
+  "mining": {
+    "disable": {
+      "name": "Disable",
+      "type": "bool",
+      "description": "Insert Description.",
+      "default": false
+    },
+
+    "mem_pool_mem_limit": {
+      "name": "Mem Pool Mem Limit",
+      "type": "number",
+      "description": "Maximum amount of memory(in MB) that can be used by the mem pool. Setting this parameter to 0 disables limiting.",
+      "default": 4
+    },
+    "mem_pool_fee_bump_shift": {
+      "name": "Mem Pool Mem Limit",
+      "type": "number",
+      "description": "A value which is used to check whether a new transaciton can replace a transaction in the memory pool with the same signer and seq. If the fee of the new transaction is `new_fee` and the fee of the transaction in the memory pool is `old_fee`, then `new_fee > old_fee + old_fee >> mem_pool_fee_bump_shift` should be satisfied to replace.",
+      "default": 3
+    },
+    "notify_work": {
+      "name": "Notify Work",
+      "type": "string[]",
+      "description": "URLs to which work package notifications are pushed.",
+      "default": [
+        ""
+      ]
+    },
+    "force_sealing": {
+      "name": "Force Sealing",
+      "type": "bool",
+      "description": "Force the node to author new blocks as if it were always sealing/mining.",
+      "default": false
+    },
+    "reseal_on_txs": {
+      "name": "Reseal On Transactions",
+      "type": "string",
+      "description": {
+        "none": "New transactions will not cause a new pending block to be created.",
+        "own": "New pending block will be created only on transactions sent using local RPC/IPC",
+        "ext": "New pending block will be created only on external transactions.",
+        "all": "New pending block will be created for all transactions (both local and external)."
+      },
+      "default": "own",
+      "values": [
+        "Never [none]",
+        "Local [own]",
+        "External [ext]",
+        "All [all]"
+      ]
+    },
+    "reseal_min_period": {
+      "name": "Reseal Period",
+      "type": "number",
+      "description": "Specify the minimum time between reseals from incoming transactions. MS is time measured in milliseconds.",
+      "default": 2000,
+      "min": 1,
+      "max": 30000
+    },
+    "reseal_max_period": {
+      "name": "Reseal max period",
+      "type": "number",
+      "description": "Specify the maximum time since last block to enable force-sealing. MS is time measured in milliseconds.",
+      "default": 120000
+    },
+    "no_reseal_timer": {
+      "name": "No Reseal Timer",
+      "type": "bool",
+      "description": "Do not use reseal timer.",
+      "default": false
+    },
+    "engine_signer": {
+      "name": "Engine Signer",
+      "type": "string",
+      "description": "Specify the address which should be used to sign consensus messages and issue blocks.",
+      "default": ""
+    },
+    "work_queue_size": {
+      "name": "Work Queue Size",
+      "type": "number",
+      "description": "Specify the number of historical work packages which are kept cached lest a solution is found for them later. High values take more memory but result in fewer unusable solutions.",
+      "default": 20
+    },
+    "section": "Mining",
+    "description": "Options for mining nodes."
+  },
+
+  "network": {
+
+    "disable": {
+      "name": "Disable",
+      "type": "bool",
+      "description": "Insert Description.",
+      "default": false
+    },
+        
+    "interface": {
+      "name": "Interface",
+      "type": "string",
+      "description": "Network interface to listen to.",
+      "default": "all"
+    },
+    "port": {
+      "name": "Port",
+      "type": "number",
+      "description": "Listen for connections on PORT",
+      "default": 30303
+    },
+    "max_peers": {
+      "name": "Max Peers",
+      "type": "number",
+      "description": "Set the maximum number of connections the user would like.",
+      "default": 50,
+      "min": 0,
+      "max": 100000,
+      "simple": true
+    },
+    "min_peers": {
+      "name": "Min Peers",
+      "type": "number",
+      "description": "Set the minimum number of connections the user would like.",
+      "default": 25,
+      "min": 0,
+      "max": 100000,
+      "simple": true
+    },
+
+    "bootstrap_addresses": {
+      "name": "Bootstrap Addresses",
+      "type": "string[]",
+      "description": "Bootstrap addresses to connect.",
+      "default": [
+        ""
+      ]
+    },
+
+    "sync": {
+      "name": "Sync",
+      "type": "bool",
+      "description": "Insert Description.",
+      "default": true
+    },
+
+    "transaction_relay": {
+      "name": "Transaction Relay",
+      "type": "bool",
+      "description": "Insert Description.",
+      "default": true
+    },
+
+    "discovery": {
+      "name": "Discovery",
+      "type": "bool",
+      "default": true,
+      "description": "Decide how to choose the addresses to be sent. Options are kademlia and unstructured. In a testing environment, an unstructured p2p network is desirable because it is more than sufficient when there are a few nodes(< 100)."
+    },
+
+    "discovery_type": {
+      "name": "Discovery Type",
+      "type": "string",
+      "description": {
+        "kademlia": "",
+        "unstructured": ""
+      },
+      "default": "unstructured",
+      "suggestions": [
+        "kademlia",
+        "unstructured"
+      ]
+    },
+
+    "discovery_refresh": {
+      "name": "Discovery Refresh",
+      "type": "number",
+      "description": "Refresh timeout of discovery. MS is time measured in milliseconds.",
+      "default": 60000
+    },
+    "discovery_bucket_size": {
+      "name": "Discovery Bucket Size",
+      "type": "number",
+      "description": "Bucket size for discovery.",
+      "default": 10
+    },
+
+    "section": "Network",
+    "description": "Network and peer-related settings. Network is not available if CodeChain is in offline mode.",
+    "condition": "!isOffline"
+  },
+  "rpc": {
+    "disable": {
+      "name": "Disable JSON-RPC",
+      "type": "bool",
+      "description": "You won't be able to interact with CodeChain using JSON-RPC over HTTP.",
+      "default": false
+    },
+
+    "interface": {
+      "name": "Interface",
+      "type": "string",
+      "description": " Specify the interface address for rpc connections.",
+      "default": "127.0.0.1",
+      "simple": true
+    },
+    "port": {
+      "name": "Port",
+      "type": "number",
+      "description": "Listen for rpc connections on PORT.",
+      "default": 8080,
+      "simple": true
+    },
+    
+    "section": "RPC",
+    "description": "Expose JSON-RPC APIs over HTTP."
+  },
+  "ipc": {
+    "disable": {
+      "name": "Disable IPC",
+      "type": "bool",
+      "description": "You won't be able to use IPC to interact with CodeChain.",
+      "default": false
+    },
+    "path": {
+      "name": "Path",
+      "type": "path",
+      "description": "Parity will create an IPC socket at {}.",
+      "default": "/tmp/jsonrpc.ipc"
+    },
+    
+    "section": "IPC",
+    "description": "Expose JSON-RPC APIs over IPC."
+  },
+  "ws": {
+    "disable": {
+      "name": "Disable ws",
+      "type": "bool",
+      "description": "",
+      "default": false
+    },
+    "interface": {
+      "name": "Interface",
+      "type": "string",
+      "description": "Specify the interface address for the WebSockets JSON-RPC server.",
+      "default": "127.0.0.1"
+    },
+    "port": {
+      "name": "Port",
+      "type": "number",
+      "description": "Specify the port portion of the WebSockets JSON-RPC server.",
+      "default": 8081
+    },
+
+    "max_connections": {
+      "name": "Max Connections",
+      "type": "number",
+      "description": "Maximum number of allowed concurrent WebSockets JSON-RPC connections.",
+      "default": 100
+    },
+    "section": "ws",
+    "description": "INSERT"
+  },
+  "snapshot": {
+    "disable_snapshot": {
+      "name": "Disable Snapshot",
+      "type": "bool",
+      "description": "Disables automatic periodic snapshots.",
+      "default": false
+    },
+    "path": {
+      "name": "Path",
+      "type": "string",
+      "description": "Specify the snapshot directory path.",
+      "default": "snapshot"
+    },
+    "section": "Snapshots",
+    "description": "Snapshoting (warp sync) settings."
+  },
+  "stratum": {
+    "disable_stratum": {
+      "name": "Disable Stratum",
+      "type": "bool",
+      "description": "Do not run Stratum server for miner push notification.",
+      "default": false
+    },
+    "port": {
+      "name": "Port",
+      "type": "number",
+      "description": "Stratum Server will be running on port {}.",
+      "default": 8008
+    },
+    "section": "Stratum (since 1.6)",
+    "description": "Stratum Server for miner push notifications."
+  }
+}
