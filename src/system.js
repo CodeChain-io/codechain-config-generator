@@ -24,8 +24,7 @@ export function localPath (platform) {
       '%UserProfile%',
       'AppData',
       'Local',
-      'Parity',
-      'Ethereum'
+      'CodeChain'
     ], platform);
   }
 
@@ -36,8 +35,7 @@ export function basePath (platform) {
   if (platform === 'Windows') {
     return joinPath([
       '%AppData%',
-      'Parity',
-      'Ethereum'
+      'CodeChain'
     ], platform);
   }
 
@@ -46,7 +44,7 @@ export function basePath (platform) {
       '$HOME',
       'Library',
       'Application Support',
-      'io.parity.ethereum'
+      'CodeChain'
     ], platform);
   }
 
@@ -54,6 +52,6 @@ export function basePath (platform) {
     '~',
     '.local',
     'share',
-    'io.parity.ethereum'
+    'CodeChain'
   ], platform);
 }

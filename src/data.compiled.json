@@ -305,7 +305,7 @@
     "path": {
       "name": "Path",
       "type": "path",
-      "description": "Parity will create an IPC socket at {}.",
+      "description": "CodeChain will create an IPC socket at {}.",
       "default": "/tmp/jsonrpc.ipc"
     },
     
